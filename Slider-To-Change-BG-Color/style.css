@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #333;
+    background-color: #388;
 }
 
 section {
@@ -29,7 +29,7 @@ div {
     font-size: 6rem;
     font-weight: 800;
     z-index: 1;
-    color: #ff0000;
+    color: blanchedalmond;
 }
 
 #rangeValue::after {

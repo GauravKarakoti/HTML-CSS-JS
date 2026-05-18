@@ -4,13 +4,13 @@ const number = document.getElementById("rangeValue");
 function updateStyle() {
     const value = Number(number.innerText);
     if(value >= 90) {
-        applyStyles('#234', '#88v4mc');
+        applyStyles('#234', '#88e4ab');
     } else if(value >= 70) {
-        applyStyles('#vbv', '#q4b3no');
+        applyStyles('#bb0', '#f4b3eb');
     } else if(value >= 50) {
-        applyStyles('#8n9', '#wbn8b9');
+        applyStyles('#fb9', '#6bb8b9');
     } else if(value >= 25) {
-        applyStyles('#8b8', '#5wb4o8');
+        applyStyles('#fb8', '#55b468');
     } else if(value === 0) {
         applyStyles('blanchedalmond', '#388');
     }
