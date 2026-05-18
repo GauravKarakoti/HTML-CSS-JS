@@ -1,26 +1,27 @@
 const body = document.body;
 const range = document.getElementById("_range");
 const number = document.getElementById("rangeValue");
-function updateStyle() {
-    const value = Number(number.innerText);
-    if(value >= 90) {
-        applyStyles('#234', '#88e4ab');
-    } else if(value >= 70) {
-        applyStyles('#bb0', '#f4b3eb');
-    } else if(value >= 50) {
-        applyStyles('#fb9', '#6bb8b9');
-    } else if(value >= 25) {
-        applyStyles('#fb8', '#55b468');
-    } else if(value === 0) {
-        applyStyles('blanchedalmond', '#388');
-    }
+
+function updateStyle(value) {
+    const hue = value * 3.6; 
+
+    const bgColor = `hsl(${hue}, 60%, 50%)`;
+    
+    const textColor = `hsl(${(hue + 180) % 360}, 80%, 30%)`;
+
+    applyStyles(textColor, bgColor);
 }
+
 function applyStyles(color, backgroundColor) {
     number.style.color = color;
     body.style.backgroundColor = backgroundColor;
 }
+
+updateStyle(Number(range.value)); 
+
 range.addEventListener("input", function() {
-    const sliderValue = Math.min(this.value, 100);
+    const sliderValue = Number(this.value);
     number.innerText = sliderValue;
-    updateStyle();
+    
+    updateStyle(sliderValue); 
 });
