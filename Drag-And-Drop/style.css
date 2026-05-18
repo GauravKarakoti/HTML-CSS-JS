@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #333;
+}
+
+h1 {
+    margin: 1rem;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-top: 0rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    margin: 0 auto;
+    background: linear-gradient(90deg, #3498db, #e74c3c);
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 10vw;
+    height: 10vh;
+    cursor: move;
+    position: relative;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.box:hover {
+    background: linear-gradient(90deg, #2980b9, #c0392b);
+}
+
+.one {
+    background-color: #19b73b;    /* Green */
+}
+
+.two {
+    background-color: #6a2b84;    /* Purple */
+}
+
+.three {
+    background-color: #f9bb00;    /* Yellow */
+}
+
+.four {
+    background-color: #b92929;    /* Red */
+}
+
+.five {
+    background-color: #1496ec;    /* Blue */
+}
+
+.six {
+    background-color: #d37070;    /* Orange */
+}
+
+.seven {
+    background-color: #013260;    /* Dark Blue */
+}
+
+.eight {
+    background-color: #96daff;    /* Cyan */
+}
+
+.nine {
+    background-color: #a2ff89;    /* Lime Green */
+}
+
+.ten {
+    background-color: #ff4ad2;    /* Pink */
+}
+
+.eleven {
+    background-color: #600101;    /* Brown */
+}
+
+.twelve {
+    background-color: #4d6001;    /* Sap Green */
+}
