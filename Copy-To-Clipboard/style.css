@@ -19,9 +19,9 @@ body {
         rgb(167, 13, 167),
         rgb(237, 22, 151),
         rgb(64, 92, 249),
-        rgb(176, 13, 201),
+        rgb(176, 13, 201)
     );
-    background-size: 200;
+    background-size: 200%;
     animation: backgroundPro 20s infinite;
 }
 
