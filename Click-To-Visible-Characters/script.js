@@ -23,4 +23,4 @@ u.addEventListener("click", () => triggerTransition(u, r));
 r.addEventListener("click", () => triggerTransition(r, a2));
 a2.addEventListener("click", () => triggerTransition(a2, v));
 v.addEventListener("click", () => triggerTransition(v, gaurav));
-gaurav.addEventListener("click", () => triggerTransition(gaurav, g));
+gaurav.addEventListener("click", () => triggerTransition(gaurav, g)); 
