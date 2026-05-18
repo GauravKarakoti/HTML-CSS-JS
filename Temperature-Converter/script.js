@@ -1,15 +1,26 @@
 function convertTemperature() {
     const celsiusInput = document.getElementById("celsius");
     const fahrenheitInput = document.getElementById("fahrenheit");
-    if(!isNaN(celsiusInput.value)) {
-        const celsiusValue = parseFloat(celsiusInput.value);
-        const fahrenheitValue = (celsiusValue * 9 / 5) + 32;
-        fahrenheitInput.value = fahrenheitValue.toFixed(2);
-    } else if(!isNaN(fahrenheitInput.value)) {
-        const fahrenheitValue = parseFloat(fahrenheitInput.value);
-        const celsiusValue = (fahrenheitValue - 32) * 5 / 9;
-        celsiusInput.value = celsiusValue.toFixed(2);
-    } else {
-        alert("Please enter a valid number");
+
+    const celsiusValue = celsiusInput.value.trim();
+    const fahrenheitValue = fahrenheitInput.value.trim();
+
+    if (celsiusValue !== "" && fahrenheitValue !== "") {
+        alert("Please clear one field before converting.");
+        return;
+    }
+
+    if (celsiusValue !== "") {
+        const fahrenheit = (parseFloat(celsiusValue) * 9 / 5) + 32;
+        fahrenheitInput.value = fahrenheit.toFixed(2);
+    }
+
+    else if (fahrenheitValue !== "") {
+        const celsius = (parseFloat(fahrenheitValue) - 32) * 5 / 9;
+        celsiusInput.value = celsius.toFixed(2);
+    }
+
+    else {
+        alert("Please enter a temperature");
     }
 }
