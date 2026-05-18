@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to righ, rgb(242, 112, 156), rgb(255, 148, 114));
+    background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
 }
 
 .container {
@@ -37,7 +37,7 @@ button {
 }
 
 .headsClass {
-    background-image: url("https://pixabay.com/images/download/x-1184526_1920.png");
+    background-image: url("https://cdn.pixabay.com/photo/2016/03/31/20/12/cent-1295582_1280.png");
 }
 
 .animate-heads {
@@ -56,7 +56,7 @@ button {
 }
 
 .tailsClass {
-    background-image: url("https://pixabay.com/images/download/x-155597_1920.png");
+    background-image: url("https://cdn.pixabay.com/photo/2013/07/13/01/21/euro-155597_1280.png");
     transform: rotateY(-180deg);
 }
 
