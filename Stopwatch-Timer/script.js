@@ -10,13 +10,26 @@ const lapList = document.getElementById("laplist");
 let minutes = 0;
 let seconds = 0;
 let milliseconds = 0;
+let startTime;
+let elapsedTime = 0;
 let interval;
 startButton.addEventListener("click", startTimer);
 stopButton.addEventListener("click", stopTimer);
 pauseButton.addEventListener("click", pauseTimer);
 resetButton.addEventListener("click", resetTimer);
 function startTimer() {
-    interval = setInterval(updateTimer, 1);
+    startTime = Date.now() - elapsedTime;
+
+    interval = setInterval(() => {
+        elapsedTime = Date.now() - startTime;
+
+        minutes = Math.floor(elapsedTime / 60000);
+        seconds = Math.floor((elapsedTime % 60000) / 1000);
+        milliseconds = elapsedTime % 1000;
+
+        displayTimer();
+    }, 10);
+
     startButton.disabled = true;
 }
 function stopTimer() {
@@ -58,6 +71,7 @@ function resetTimerData() {
     minutes = 0;
     seconds = 0;
     milliseconds = 0;
+    elapsedTime = 0;
     displayTimer();
 }
 function addToLapList() {
