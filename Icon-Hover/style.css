@@ -44,10 +44,11 @@ ul li a:hover {
     transform: translate(-50%, -50%);
     pointer-events: none;
     transition: width 0.2s, height 0.2s;
+    display: none;
 }
 
 ul li:hover ~.cursor {
-    width: 90%;
-    height: 90%;
+    width: 90px;
+    height: 90px;
     border: 2px solid #ff69b4;
 }
