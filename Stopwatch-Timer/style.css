@@ -74,6 +74,10 @@ button:hover {
     background-color: #d72a76;
 }
 
+#startBtn:disabled {
+    background-color: #7c7176;
+}
+
 .lap-title {
     font-size: 1.5rem;
 }
