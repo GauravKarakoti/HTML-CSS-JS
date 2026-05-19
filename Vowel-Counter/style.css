@@ -42,14 +42,65 @@ textarea {
     width: 500px;
     height: 350px;
     margin: 10px auto 30px auto;
-    display: block;
-    font-size: 24px;
     padding: 20px;
-    color: rgb(0, 0, 0);
-    border: 1px solid #dddddd;
-    border-radius: 5px;
+
+    font-size: 20px;
+    font-family: sans-serif;
+    line-height: 1.6;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+
+    backdrop-filter: blur(12px);
+
     resize: none;
-    animation: slideIn 1s ease;
+    outline: none;
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 0 10px rgba(255,255,255,0.05);
+
+    transition: all 0.3s ease;
+
+    animation: slideIn 1s ease,
+               neonGlow 1s infinite alternate;
+}
+
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+}
+
+textarea:focus {
+    border-color: #ff4da6;
+
+    box-shadow:
+        0 0 10px #ff4da6,
+        0 0 20px rgba(255, 77, 166, 0.5),
+        0 8px 32px rgba(0,0,0,0.3);
+
+    transform: scale(1.01);
+}
+
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: #ff4da6;
+    border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+    background: #ff0084;
 }
 
 @keyframes slideIn {
