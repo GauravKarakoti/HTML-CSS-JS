@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Karakoti | HTML-CSS-JS Projects</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+            border-bottom: 1px solid #334155;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            margin-top: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            border: 1px solid #334155;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 80px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+            border-top: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Frontend Project Showcase</h1>
+        <p class="subtitle">A collection of HTML, CSS, and JS mini-projects by Gaurav Karakoti</p>
+    </header>
+
+    <div class="container">
+        <a href="./Bubbles-Particle/index.html" class="card">Bubbles Particle</a>
+        <a href="./Cash-Calculator/index.html" class="card">Cash Calculator</a>
+        <a href="./Click-To-Visible-Characters/index.html" class="card">Click To Visible Characters</a>
+        <a href="./Coin-Flip/index.html" class="card">Coin Flip</a>
+        <a href="./Copy-To-Clipboard/index.html" class="card">Copy To Clipboard</a>
+        <a href="./Drag-And-Drop/index.html" class="card">Drag And Drop</a>
+        <a href="./Drops-Animation/index.html" class="card">Drops Animation</a>
+        <a href="./Icon-Hover/index.html" class="card">Icon Hover</a>
+        <a href="./Key-Codes/index.html" class="card">Key Codes</a>
+        <a href="./Name-Tag-Sticker/index.html" class="card">Name Tag Sticker</a>
+        <a href="./Navbar/index.html" class="card">Navbar</a>
+        <a href="./Pet-Adoption-Page/index.html" class="card">Pet Adoption Page</a>
+        <a href="./Poll-System/index.html" class="card">Poll System</a>
+        <a href="./Random-Password/index.html" class="card">Random Password</a>
+        <a href="./Simon-Says-game/index.html" class="card">Simon Says Game</a>
+        <a href="./Slider-To-Change-BG-Color/index.html" class="card">Slider To Change BG Color</a>
+        <a href="./Smoke-Effect/index.html" class="card">Smoke Effect</a>
+        <a href="./Spider-Man-Website/index.html" class="card">Spider-Man Website</a>
+        <a href="./Stopwatch-Timer/index.html" class="card">Stopwatch Timer</a>
+        <a href="./Temperature-Converter/index.html" class="card">Temperature Converter</a>
+        <a href="./Testimonial/index.html" class="card">Testimonial</a>
+        <a href="./The-Domicos-Website/index.html" class="card">The Domico's Website</a>
+        <a href="./Timeline/index.html" class="card">Timeline</a>
+        <a href="./Vowel-Counter/index.html" class="card">Vowel Counter</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026. Built from scratch.</p>
+    </footer>
+
+</body>
+</html>
