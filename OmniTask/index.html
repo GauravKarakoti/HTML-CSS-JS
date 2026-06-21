@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniTask // Premium Project Board</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glass-bg"></div>
+  <div class="glow-effect glow-1"></div>
+  <div class="glow-effect glow-2"></div>
+
+  <div class="app-container">
+    <!-- Sidebar / Top bar header -->
+    <header class="main-header">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h1>OmniTask<span class="version">v1.0</span></h1>
+      </div>
+
+      <div class="search-filter-bar">
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search tasks, descriptions, tags...">
+        </div>
+
+        <div class="filter-controls">
+          <select id="priorityFilter" class="custom-select">
+            <option value="all">All Priorities</option>
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+
+          <select id="tagFilter" class="custom-select">
+            <option value="all">All Tags</option>
+            <!-- Dynamic tags will be populated here -->
+          </select>
+
+          <div class="view-toggle">
+            <button id="boardViewBtn" class="toggle-btn active" title="Kanban Board View">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="10" rx="1"/><rect width="7" height="5" x="3" y="14" rx="1"/></svg>
+            </button>
+            <button id="listViewBtn" class="toggle-btn" title="List View">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button id="createTaskBtn" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+        New Task
+      </button>
+    </header>
+
+    <!-- Dashboard Analytics Panel -->
+    <section class="analytics-panel">
+      <div class="analytics-card glass-card">
+        <h3>Task Summary</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" id="totalTasksCount">0</span>
+            <span class="stat-label">Total Tasks</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number color-todo" id="todoTasksCount">0</span>
+            <span class="stat-label">To Do</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number color-progress" id="progressTasksCount">0</span>
+            <span class="stat-label">In Progress</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number color-review" id="reviewTasksCount">0</span>
+            <span class="stat-label">In Review</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number color-done" id="doneTasksCount">0</span>
+            <span class="stat-label">Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics-card glass-card chart-card">
+        <h3>Status Breakdown</h3>
+        <div class="chart-container">
+          <svg viewBox="0 0 36 36" class="circular-chart">
+            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <!-- Segments populated dynamically by JS -->
+            <g id="chartSegments"></g>
+          </svg>
+          <div class="chart-info">
+            <div id="completionPercentage" class="percent">0%</div>
+            <div class="label">Done</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="content-workspace">
+      <!-- Kanban Board View -->
+      <div id="boardView" class="view-pane active">
+        <div class="kanban-grid">
+          <!-- Column To Do -->
+          <div class="kanban-column" data-status="todo">
+            <div class="column-header">
+              <span class="status-indicator indicator-todo"></span>
+              <h2>To Do</h2>
+              <span class="task-count badge" id="count-todo">0</span>
+            </div>
+            <div class="column-body" id="list-todo">
+              <!-- Tasks injected here -->
+            </div>
+          </div>
+
+          <!-- Column In Progress -->
+          <div class="kanban-column" data-status="inprogress">
+            <div class="column-header">
+              <span class="status-indicator indicator-progress"></span>
+              <h2>In Progress</h2>
+              <span class="task-count badge" id="count-inprogress">0</span>
+            </div>
+            <div class="column-body" id="list-inprogress">
+              <!-- Tasks injected here -->
+            </div>
+          </div>
+
+          <!-- Column In Review -->
+          <div class="kanban-column" data-status="inreview">
+            <div class="column-header">
+              <span class="status-indicator indicator-review"></span>
+              <h2>In Review</h2>
+              <span class="task-count badge" id="count-inreview">0</span>
+            </div>
+            <div class="column-body" id="list-inreview">
+              <!-- Tasks injected here -->
+            </div>
+          </div>
+
+          <!-- Column Done -->
+          <div class="kanban-column" data-status="done">
+            <div class="column-header">
+              <span class="status-indicator indicator-done"></span>
+              <h2>Done</h2>
+              <span class="task-count badge" id="count-done">0</span>
+            </div>
+            <div class="column-body" id="list-done">
+              <!-- Tasks injected here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- List View Pane -->
+      <div id="listView" class="view-pane">
+        <div class="glass-card list-container">
+          <table class="task-table">
+            <thead>
+              <tr>
+                <th>Task Details</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Tags</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="listTableBody">
+              <!-- Tasks dynamically loaded -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Task Dialog Modal (Create / Edit) -->
+  <div id="taskModal" class="modal-overlay">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h2 id="modalTitle">Create New Task</h2>
+        <button id="closeModalBtn" class="close-btn">&times;</button>
+      </div>
+      <form id="taskForm" class="modal-body">
+        <input type="hidden" id="taskId">
+        
+        <div class="form-group">
+          <label for="taskTitle">Title</label>
+          <input type="text" id="taskTitle" required placeholder="What needs to be done?">
+        </div>
+
+        <div class="form-group">
+          <label for="taskDescription">Description</label>
+          <textarea id="taskDescription" rows="3" placeholder="Provide more details about the task..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskStatus">Status</label>
+            <select id="taskStatus" class="custom-select">
+              <option value="todo">To Do</option>
+              <option value="inprogress">In Progress</option>
+              <option value="inreview">In Review</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" class="custom-select">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskDueDate">Due Date</label>
+            <input type="date" id="taskDueDate" class="custom-input">
+          </div>
+
+          <div class="form-group">
+            <label for="taskTags">Tags (comma-separated)</label>
+            <input type="text" id="taskTags" placeholder="e.g. Design, Frontend, Feature">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="cancelModalBtn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" id="saveTaskBtn" class="btn btn-primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
